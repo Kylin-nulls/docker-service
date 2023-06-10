@@ -1,0 +1,16 @@
+version: '1.0'
+services:
+  mysql:
+    restart: always
+    image: mysql:5.7.27
+    ports:
+      - 3306:3306
+    environment:
+      - TZ=Asia/Shanghai
+      - MYSQL_INITDB_SKIP_TZINFO
+      - MYSQL_ROOT_PASSWORD=hchwehcIO79&*(
+    volumes:
+      - ./data/mysql:/var/lib/mysql
+      - ./config/mysql:/etc/mysql/conf.d
+      # - ./init/mysql:/docker-entrypoint-initdb.d
+      # - ./init/sql:/opt/sql

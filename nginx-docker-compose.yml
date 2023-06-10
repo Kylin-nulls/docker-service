@@ -1,0 +1,17 @@
+version: '1.0'
+services:
+  nginx:
+    restart: always
+    image: nginx:1.16.1
+    ports:
+      - 80:80
+      - 443:443
+    environment:
+      - TZ=Asia/Shanghai
+    volumes:
+      - ./data/nginx/logs:/var/log/nginx
+      - ./data/nginx/html:/usr/share/nginx/html:ro
+      - ./data/nginx/cache:/usr/share/nginx/cache
+      - ./config/nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./config/nginx/conf.d:/etc/nginx/conf.d:ro
+      - ./app/logs:/opt/app_logs:ro
